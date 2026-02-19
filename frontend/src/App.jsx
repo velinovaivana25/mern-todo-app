@@ -1,3 +1,5 @@
+
+
 import { useEffect, useState } from "react";
 import axios from 'axios';
 import { MdOutlineDone } from "react-icons/md";
@@ -7,10 +9,12 @@ import { FaTrash } from "react-icons/fa6";
 import { IoClipboardOutline } from "react-icons/io5";
 
 function App() {
+
   const [newTodo, setNewTodo] = useState("");
   const [todos, setTodos] = useState([]);
   const [editingTodo, setEditingTodo] = useState(null);
   const [editedText, setEditedText] = useState("");
+
 
   const addTodo = async (e) => {
     e.preventDefault();
@@ -24,6 +28,8 @@ function App() {
     }
 
   }
+
+
   const fetchTodos = async () => {
     try {
       const response = await axios.get("/api/todos");
@@ -34,14 +40,17 @@ function App() {
     }
   }
 
+
   useEffect(() => {
     fetchTodos();
   }, [])
+
 
   const startEditing = (todo) => {
     setEditingTodo(todo._id)
     setEditedText(todo.text)
   }
+
 
   const saveEdit = async (id) => {
     try {
@@ -64,6 +73,8 @@ function App() {
       console.log("Error deleting todo: ", error)
     }
   }
+
+
   const toggleTodo = async (id) => {
     try {
       const todo = todos.find((t) => t._id === id)
@@ -77,6 +88,8 @@ function App() {
 
     }
   }
+
+
   return (
 
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-4">
@@ -137,3 +150,4 @@ function App() {
 }
 
 export default App
+
