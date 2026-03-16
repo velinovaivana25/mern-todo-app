@@ -11,8 +11,7 @@ function App() {
   const [editingTodo, setEditingTodo] = useState(null);
   const [editedText, setEditedText] = useState("");
 
-  const API = "https://mern-todo-app-1-x1sz.onrender.com/";
-  
+  const API = "https://mern-todo-app-1-x1sz.onrender.com";
 
   const addTodo = async (e) => {
   e.preventDefault();
