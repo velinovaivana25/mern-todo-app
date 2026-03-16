@@ -15,21 +15,21 @@ function App() {
   
 
   const addTodo = async (e) => {
-    e.preventDefault();
-    if (!newTodo.trim()) return;
+  e.preventDefault();
+  if (!newTodo.trim()) return;
 
-    try {
-      const response = await axios.post(`${API}/api/tasks`, {
-        text: newTodo,
-      });
+  try {
+    const response = await axios.post(`${API}/api/tasks`, {
+      text: newTodo
+    });
 
-      setTodos([...todos, response.data]);
-      setNewTodo("");
-    } catch (error) {
-      console.log("Error adding todo:", error);
-    }
-  };
+    setTodos([...todos, response.data]);
+    setNewTodo("");
 
+  } catch (error) {
+    console.log(error.response?.data || error.message);
+  }
+};
   const fetchTodos = async () => {
     try {
       const response = await axios.get(`${API}/api/tasks`);
